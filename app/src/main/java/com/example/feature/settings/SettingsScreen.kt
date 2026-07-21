@@ -158,9 +158,10 @@ fun SettingsScreen(
                     color = MaterialTheme.colorScheme.outline
                 )
                 Text(
-                    "Sản xuất bởi Senior Android Engineer",
-                    fontSize = 10.sp,
-                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.7f)
+                    "Bản quyền: zalo 0333334623",
+                    fontSize = 11.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
                 )
             }
         }

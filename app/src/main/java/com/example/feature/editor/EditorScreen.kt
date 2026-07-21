@@ -181,7 +181,7 @@ fun EditorScreen(
                         if (bg.uri.isNotEmpty()) {
                             AsyncImage(
                                 model = bg.uri,
-                                contentDescription = "Background image",
+                                contentDescription = "Ảnh nền",
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier
                                     .fillMaxSize()
@@ -300,7 +300,7 @@ fun EditorScreen(
                                         LayerType.STICKER -> {
                                             AsyncImage(
                                                 model = layer.stickerUri,
-                                                contentDescription = "Sticker image",
+                                                contentDescription = "Hình nhãn dán",
                                                 contentScale = ContentScale.Fit,
                                                 modifier = Modifier.fillMaxSize()
                                             )
@@ -636,31 +636,31 @@ fun BackgroundTabPanel(
                         viewModel.updateProjectState { current ->
                             current.copy(background = current.background.copy(scale = (current.background.scale + 0.1f).coerceAtMost(5f)))
                         }
-                    }) { Icon(Icons.Default.ZoomIn, "Zoom In") }
+                    }) { Icon(Icons.Default.ZoomIn, "Phóng to") }
 
                     IconButton(onClick = {
                         viewModel.updateProjectState { current ->
                             current.copy(background = current.background.copy(scale = (current.background.scale - 0.1f).coerceAtLeast(0.1f)))
                         }
-                    }) { Icon(Icons.Default.ZoomOut, "Zoom Out") }
+                    }) { Icon(Icons.Default.ZoomOut, "Thu nhỏ") }
 
                     IconButton(onClick = {
                         viewModel.updateProjectState { current ->
                             current.copy(background = current.background.copy(rotation = (current.background.rotation + 90f) % 360f))
                         }
-                    }) { Icon(Icons.Default.RotateRight, "Rotate 90") }
+                    }) { Icon(Icons.Default.RotateRight, "Xoay 90°") }
 
                     IconButton(onClick = {
                         viewModel.updateProjectState { current ->
                             current.copy(background = current.background.copy(isFlippedHorizontally = !current.background.isFlippedHorizontally))
                         }
-                    }) { Icon(Icons.Default.Flip, "Mirror Horizontal") }
+                    }) { Icon(Icons.Default.Flip, "Lật ngang") }
 
                     IconButton(onClick = {
                         viewModel.updateProjectState { current ->
                             current.copy(background = BackgroundTransform(uri = current.background.uri))
                         }
-                    }) { Icon(Icons.Default.Restore, "Reset Background") }
+                    }) { Icon(Icons.Default.Restore, "Đặt lại ảnh nền") }
                 }
                 
                 Row(
@@ -731,7 +731,7 @@ fun TextTabPanel(
                                 }
                             )
                         }
-                    }) { Icon(Icons.Default.TextFormat, "Decrease Font Size") }
+                    }) { Icon(Icons.Default.TextFormat, "Giảm cỡ chữ") }
                     IconButton(onClick = {
                         viewModel.updateProjectState { current ->
                             current.copy(
@@ -740,7 +740,7 @@ fun TextTabPanel(
                                 }
                             )
                         }
-                    }) { Icon(Icons.Default.TextFields, "Increase Font Size") }
+                    }) { Icon(Icons.Default.TextFields, "Tăng cỡ chữ") }
                 }
 
                 Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -986,7 +986,15 @@ fun FiltersTabPanel(
                         onClick = {
                             viewModel.updateProjectState { current -> current.copy(quality = q) }
                         },
-                        label = { Text(q, fontSize = 10.sp) }
+                        label = {
+                            val qViet = when (q) {
+                                "Standard" -> "Tiêu chuẩn"
+                                "HQ Balanced" -> "HQ Cân bằng"
+                                "HQ Strong" -> "HQ Cao"
+                                else -> q
+                            }
+                            Text(qViet, fontSize = 10.sp)
+                        }
                     )
                 }
             }
