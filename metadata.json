@@ -1,0 +1,6 @@
+{
+  "name": "AOV Poster Studio",
+  "description": "Ứng dụng thiết kế và tải lên poster AOV chuyên nghiệp và bảo mật.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
