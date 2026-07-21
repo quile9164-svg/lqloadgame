@@ -153,7 +153,7 @@ fun SettingsScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    "Phiên bản 1.5.0 (Android Native Port)",
+                    "Phiên bản 1.0.1 (Android Native Port)",
                     fontSize = 11.sp,
                     color = MaterialTheme.colorScheme.outline
                 )
